@@ -18,7 +18,7 @@
     <header>
         <nav class="container">
             <h1>CAMovie</h1>
-            <div class="dsmovie-contact-container">
+            <div class="contact-container">
                 <img src="assets/img/github.svg" alt="github">
                 <a href="https://github.com/dev0821">/caiquedv</a>
             </div>
@@ -26,28 +26,36 @@
     </header>
 
     <main>
-        <section id="dsmovie-card-list" class="container">
+        <section id="card-list" class="container">
 
-            <div class="dsmovie-pagination-container">
-                <div class="dsmovie-pagination-box">
-                    <button class="next">
-                        <img src="assets/img/arrow.svg" alt="previous">
-                    </button>
-                    <p>1 de 2</p>
-                    <button class="next">
-                        <img class="dsmovie-flip-horizontal" src="assets/img/arrow.svg" alt="next">
-                    </button>
-                </div>
+            <div class="pagination-container">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                      <li class="page-item disabled" id="prev">
+                        <a class="page-link"  href="#" aria-label="Previous" >
+                          <span aria-hidden="true">&laquo;</span>
+                        </a>
+                      </li>
+                      <li class="page-item pageEnum active" aria-current="page"><a class="page-link" href="#">1</a></li>
+                      <li class="page-item pageEnum"><a class="page-link" href="#">2</a></li>
+                      <li class="page-item pageEnum"><a class="page-link" href="#">3</a></li>
+                      <li class="page-item" id="next">
+                        <a class="page-link" href="#" aria-label="Next">
+                          <span aria-hidden="true">&raquo;</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </nav>
             </div>
 
             <div id="cardModel">
                 <div class="col-sm-6 col-lg-4 col-xl-3 mb-3 cardItem">
-                    <div class="dsmovie-card">
+                    <div class="card">
                         <img src=""
                             alt="">
-                        <div class="dsmovie-card-desciption">
+                        <div class="card-desciption">
                             <h3></h3>
-                            <div class="dsmovie-card-description-botton">
+                            <div class="card-description-botton">
                                 <h4>3.8</h4>
                                 <div>
                                     <img src="assets/img/star-full.svg" alt="Star">
@@ -57,7 +65,7 @@
                                     <img src="assets/img/star-empty.svg" alt="Star">
                                 </div>
                                 <p>10 avaliações</p>
-                                <a class="dsmovie-btn" href="form.html">Avaliar</a>
+                                <a class="btn" href="form.html">Avaliar</a>
                             </div>
                         </div>
                     </div>
@@ -68,10 +76,9 @@
         </section>
     </main>
 
-    <div class="0s"></div>
-
     <script type="text/javascript" src="assets/js/movies.js"></script>
     <script type="text/javascript" src="assets/js/script.js"></script>
+    <script type="text/javascript" src="assets/js/form.js"></script>
 </body>
 
 </html>
