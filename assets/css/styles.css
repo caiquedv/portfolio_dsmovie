@@ -45,6 +45,7 @@ nav {
 nav h1 {
     font-size: 24px;
     font-weight: 700;
+    user-select: none;
 }
 
 a,
@@ -82,7 +83,8 @@ a:hover {
     height: 190px;
 }
 
-.card-desciption h3 {
+.card-desciption h3,
+.form-desciption h3 {
     font-size: 14px;
     font-weight: 700;
     margin-bottom: 10px;
@@ -158,12 +160,6 @@ a:hover {
 
 .form {
     width: 100%;
-}
-
-.form-desciption h3 {
-    font-size: 12px;
-    font-weight: 700;
-    margin-bottom: 20px;
 }
 
 .form-group {
