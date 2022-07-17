@@ -1,5 +1,5 @@
 // initial data
-let cardPage = localStorage.cardPage == undefined ? 'page-1' : localStorage.cardPage;
+let cardPage = sessionStorage.cardPage == undefined ? 'page-1' : sessionStorage.cardPage;
 let currentPage = parseInt(cardPage.slice(5)); 
 let pageBtns = document.querySelectorAll('.page-item'); 
 let pageEnuns = document.querySelectorAll('.pageEnum'); 
@@ -34,8 +34,8 @@ function printCard() {
             cardImg.alt = movie.title;
             rateBtn.setAttribute('data-movie-id', movie.id);
             rateBtn.addEventListener('click', () => { 
-                localStorage.setItem("id", rateBtn.getAttribute('data-movie-id')); // salva no navegador o id do card avaliado p/ construção do form
-                localStorage.setItem("cardPage", cardPage);
+                sessionStorage.setItem("id", rateBtn.getAttribute('data-movie-id')); // salva no navegador o id do card avaliado p/ construção do form
+                sessionStorage.setItem("cardPage", cardPage);
                 window.open('form.html');
             });
 
@@ -82,7 +82,7 @@ function pagination() {
         disabledClass();
         eraseCard(); // apaga os cards clonados ao trocar de pagina
         printCard(); 
-        localStorage.setItem('cardPage', cardPage);
+        sessionStorage.setItem('cardPage', cardPage);
     }));
 
     function activeClass(allBtns) { 

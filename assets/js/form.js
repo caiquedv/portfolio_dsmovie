@@ -1,5 +1,5 @@
 // Initial data
-let movieId = localStorage.getItem("id");
+let movieId = sessionStorage.getItem("id");
 let form = document.querySelector('form');
 let emailInput = form.querySelector('input');
 let voteInput = form.querySelector('select');
@@ -31,7 +31,7 @@ function nativeValidation() {
             localStorage.setItem("votes", `${localStorage.votes}-${movieId}#${voteInput.value}`);
             opener.location.reload(); 
             window.alert('Obrigado pelo seu voto!');
-            form.submit();
+            // form.submit();
             window.close();            
         }
     });
