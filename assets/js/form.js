@@ -2,6 +2,7 @@
 let movieId = localStorage.getItem("id");
 let form = document.querySelector('form');
 let emailInput = form.querySelector('input');
+let voteInput = form.querySelector('select');
 let i;
 
 // Events
@@ -9,25 +10,33 @@ let i;
 document.querySelector('.card img').src = moviesJson[movieId].img;
 document.querySelector('.card img').alt = moviesJson[movieId].title;
 document.querySelector('.card h3').innerHTML = moviesJson[movieId].title;
-    
-form.addEventListener('submit', (event) => { // Validação nativa do formulário
-    event.preventDefault();
-    clearErrors(); 
 
-    let send = true;
-    let check = checkInput(); 
-   
-    if(check !== true) { 
-        send = false;
-        showError(emailInput, check); 
-    }
-    
-    if(send) {
-        form.submit();
-    }
-});
+nativeValidation();
 
 // functions
+function nativeValidation() {
+    form.addEventListener('submit', (event) => { // Validação nativa do formulário
+        event.preventDefault();
+        clearErrors(); 
+    
+        let send = true;
+        let check = checkInput(); 
+       
+        if(check !== true) { 
+            send = false;
+            showError(emailInput, check); 
+        }
+        
+        if(send) { 
+            localStorage.setItem("votes", `${localStorage.votes}-${movieId}#${voteInput.value}`);
+            opener.location.reload(); 
+            window.alert('Obrigado pelo seu voto!');
+            form.submit();
+            window.close();            
+        }
+    });
+}
+
 function checkInput() { //verifica se o input foi preenchico corretamente
     let rules = emailInput.getAttribute('data-rules').split('|');
     
