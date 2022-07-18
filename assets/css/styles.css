@@ -104,23 +104,23 @@ a:hover {
     border-radius: 4px;
 }
 
-.card-description-botton {
+.card-description-bottom {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.card-description-botton h4 {
+.card-description-bottom h4 {
     font-size: 16px;
     font-weight: 700;
     color: var(--star-yellow);
 }
 
-.card-description-botton img {
+.card-description-bottom img {
     width: 22px;
 }
 
-.card-description-botton p {
+.card-description-bottom p {
     font-size: 12px;
     font-weight: 400;
     color: var(--text-light-gray);

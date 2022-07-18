@@ -5,6 +5,7 @@ let pageBtns = document.querySelectorAll('.page-item');
 let pageEnuns = document.querySelectorAll('.pageEnum'); 
 let pageQuantity = pageEnuns.length;
 let maxCard = 12; 
+let j;
 
 // events
 printCard(); // imprime os cards na tela
@@ -18,10 +19,10 @@ function printCard() {
         let cardImg = cloneCard.querySelector('.card img');
         let rateBtn = cloneCard.querySelector('.btn');
         let cardTitle = cloneCard.querySelector('h3');
+        let cardStars = cloneCard.querySelectorAll('.card-description-bottom img');
         let pCard = cloneCard.querySelector('p');
         let rating = cloneCard.querySelector('h4');
         
-
         // verifica se o item no objeto pertence a pagina e delimita a quantidade de impressão
         if(movie.page == cardPage && clonesQuantity < maxCard ) { 
             document.querySelector('.row').append(cloneCard); 
@@ -31,7 +32,8 @@ function printCard() {
             cloneCard.classList.add(`${movie.page}`);
             cardTitle.innerHTML = movie.title; 
             cardImg.src = movie.img; 
-            cardImg.alt = movie.title;
+            cardImg.alt = movie.title; 
+
             rateBtn.setAttribute('data-movie-id', movie.id);
             rateBtn.addEventListener('click', () => { 
                 sessionStorage.setItem("id", rateBtn.getAttribute('data-movie-id')); // salva no navegador o id do card avaliado p/ construção do form
@@ -39,26 +41,96 @@ function printCard() {
                 window.open('form.html');
             });
 
-            // atualiza votos
+            // atualiza votos ao avaliar filme
             if(localStorage.votes) {
                 let userVote = localStorage.votes.split('-');
+                let voteQuantity = 0;
+                let ratedMovieId;
+                let stars = [1, 2, 3, 4, 5];  
+                let votesSum = 0;       
+                let totalRating;  
+                let average;     
 
-                userVote.forEach(vote => {
-                    let ratedMovieId = vote.split('#')[0];
-                    let userVote = vote.split('#')[1];
-                    let reviews = pCard.innerText.split(' ')[0];
-                    let currentRating = parseFloat(rating.innerText);
+                userVote.forEach(e => {
+                    let vote = e.split('#');
+                    ratedMovieId = vote[0];
 
                     if(ratedMovieId == movie.id.toString()) { 
-                        pCard.innerHTML = parseFloat(reviews) + 1;
+                        voteQuantity += ratedMovieId == movie.id ? 1 : 0;
+                        starWeight = parseInt(e.split('#')[1]);
 
-                        let ratingAverage = (currentRating + userVote /  parseInt(pCard.innerText)).toFixed(2);
-                        rating.innerHTML = ratingAverage <= 5 ? ratingAverage : 5;
+                        votesSum += starWeight == 1 ? (voteQuantity + movie.review.one) * stars[0] : movie.review.one * stars[0];
+                        votesSum += starWeight == 2 ? (voteQuantity + movie.review.two) * stars[1] : movie.review.two * stars[1];
+                        votesSum += starWeight == 3 ? (voteQuantity + movie.review.three) * stars[2] : movie.review.three * stars[2];
+                        votesSum += starWeight == 4 ? (voteQuantity + movie.review.four) * stars[3] : movie.review.four * stars[3];
+                        votesSum += starWeight == 5 ? (voteQuantity + movie.review.five) * stars[4] : movie.review.five * stars[4];
+                        
+                        average = (votesSum / 15) < 5 ? (votesSum / 15) : 5
+                        totalRating = parseInt(pCard.innerText.split(' ')[0]) + 1;
+                        rating.innerHTML = average.toFixed(1);
+                        pCard.innerHTML = `${totalRating} avaliações`;
+                        // console.log(average)
+                        votesSum = 0;
+
+                        let roundedAvg = Math.floor(average);     
+                        updateStars(roundedAvg); 
                     }
-                });
+                });   
             }
-        }         
-    }); 
+        } 
+        function updateStars(avg) {
+            // atualiza as estrelas
+            switch(avg) {
+                case 1: 
+                    console.log('ok')
+                    cardStars[0].src = "assets/img/star-full.svg";
+                    cardStars[1].src = "assets/img/star-empty.svg";
+                    cardStars[2].src = "assets/img/star-empty.svg";
+                    cardStars[3].src = "assets/img/star-empty.svg";
+                    cardStars[4].src = "assets/img/star-empty.svg";
+                    break;
+                case 2:
+                    console.log('ok')
+                    cardStars[0].src = "assets/img/star-full.svg";
+                    cardStars[1].src = "assets/img/star-full.svg";
+                    cardStars[2].src = "assets/img/star-empty.svg";
+                    cardStars[3].src = "assets/img/star-empty.svg";
+                    cardStars[4].src = "assets/img/star-empty.svg";
+                    break;
+                case 3:
+                    console.log('ok')
+                    cardStars[0].src = "assets/img/star-full.svg";
+                    cardStars[1].src = "assets/img/star-full.svg";
+                    cardStars[2].src = "assets/img/star-full.svg";
+                    cardStars[3].src = "assets/img/star-empty.svg";
+                    cardStars[4].src = "assets/img/star-empty.svg";
+                    break;
+                case 4:
+                    console.log('ok')
+                    cardStars[0].src = "assets/img/star-full.svg";
+                    cardStars[1].src = "assets/img/star-full.svg";
+                    cardStars[2].src = "assets/img/star-full.svg";
+                    cardStars[3].src = "assets/img/star-full.svg";
+                    cardStars[4].src = "assets/img/star-empty.svg";
+                    break;
+                case 5:
+                    console.log('ok')
+                    cardStars[0].src = "assets/img/star-full.svg";
+                    cardStars[1].src = "assets/img/star-full.svg";
+                    cardStars[2].src = "assets/img/star-full.svg";
+                    cardStars[3].src = "assets/img/star-full.svg";
+                    cardStars[4].src = "assets/img/star-full.svg";
+                    break;
+                    default:
+                        console.log(average)
+                    cardStars[0].src = "assets/img/star-empty.svg";
+                    cardStars[1].src = "assets/img/star-empty.svg";
+                    cardStars[2].src = "assets/img/star-empty.svg";
+                    cardStars[3].src = "assets/img/star-empty.svg";
+                    cardStars[4].src = "assets/img/star-empty.svg";
+            }
+        }           
+    });
 }
 
 function pagination() { 
