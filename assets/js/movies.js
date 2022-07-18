@@ -1,21 +1,21 @@
 let moviesJson = [
     {id: 0, page: 'page-1', title: 'The Witcher', review: {
-        one: 1, two: 3, three: 2, four: 3, five: 3
+        one: 0, two: 0, three: 0, four: 0, five: 0
     }, img: "https://www.themoviedb.org/t/p/w533_and_h300_bestv2/jBJWaqoSCiARWtfV0GlqHrcdidd.jpg"},
     {id: 1, page: 'page-1', title: 'Sonic 2', review: {
-        one: 1, two: 3, three: 2, four: 3, five: 3
+        one: 6, two: 1, three: 1, four: 1, five: 1
     },  img: "https://www.themoviedb.org/t/p/w533_and_h300_bestv2/egoyMDLqCxzjnSrWOz50uLlJWmD.jpg"},
     {id: 2, page: 'page-1', title: 'Doutor Estranho no Multiverso da Loucura', review: {
-        one: 1, two: 3, three: 2, four: 3, five: 3
+        one: 0, two: 0, three: 10, four: 0, five: 0
     },  img: "https://www.themoviedb.org/t/p/w533_and_h300_bestv2/AdyJH8kDm8xT8IKTlgpEC15ny4u.jpg"},
     {id: 3, page: 'page-1', title: 'Moonfall: Ameaça Lunar', review: {
-        one: 1, two: 3, three: 2, four: 3, five: 3
+        one: 0, two: 0, three: 0, four: 0, five: 10
     },  img: "https://www.themoviedb.org/t/p/w533_and_h300_bestv2/x747ZvF0CcYYTTpPRCoUrxA2cYy.jpg"},
     {id: 4, page: 'page-1', title: 'Homem-Aranha: Sem Volta Para Casa', review: {
-        one: 1, two: 3, three: 2, four: 3, five: 3
+        one: 0, two: 0, three: 0, four: 3, five: 10
     },  img: "https://www.themoviedb.org/t/p/w533_and_h300_bestv2/iQFcwSGbZXMkeyKrxbPnwnRo5fl.jpg"},
     {id: 5, page: 'page-1', title: 'Animais Fantásticos: Os Segredos de Dumbledore', review: {
-        one: 1, two: 3, three: 2, four: 3, five: 3
+        one: 1, two: 3, three: 2, four: 3, five: 10
     },  img: "https://www.themoviedb.org/t/p/w533_and_h300_bestv2/wdjdHBDwmynWUrJcNzS24uegvK5.jpg"},
     {id: 6, page: 'page-1', title: 'Morbius', review: {
         one: 1, two: 3, three: 2, four: 3, five: 3
