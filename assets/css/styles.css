@@ -63,6 +63,22 @@ a:hover {
     margin-right: 10px;
 }
 
+.pagination-container {
+    padding: 15px 0;
+    display: flex;
+    justify-content: center;
+    user-select: none;
+}
+
+.pagination-container a {
+    color: var(--color-primary);
+    font-weight: bold;
+}
+
+.page-item.active .page-link {
+    background-color: var(--color-primary);
+}
+
 #cardModel {
     display: none;
 }
@@ -125,21 +141,6 @@ a:hover {
     font-weight: 400;
     color: var(--text-light-gray);
     margin-bottom: 10px;
-}
-
-.pagination-container {
-    padding: 15px 0;
-    display: flex;
-    justify-content: center;
-}
-
-.pagination-container a {
-    color: var(--color-primary);
-    font-weight: bold;
-}
-
-.page-item.active .page-link {
-    background-color: var(--color-primary);
 }
 
 /* form.html css */
